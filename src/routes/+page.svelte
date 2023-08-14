@@ -10,6 +10,10 @@
   export let data;
   console.log(data.data)
 
+  function replaceChars(string){
+    return string.replaceAll(' ','').replaceAll('/','').replaceAll(',','').replaceAll("'",'').replaceAll("(",'').replaceAll(")",'')
+  }
+
   let svgElements = [];
   let temp;
   onMount(() => {
@@ -55,7 +59,7 @@
   console.log(dataOrdered)
 
   function mouseover(tekst){
-    select('.' + tekst.replaceAll(' ','').replaceAll('/','').replaceAll(',',''))
+    select('.' + replaceChars(tekst))
       .style('visibility', 'visible')
   }
 
@@ -96,8 +100,8 @@
 </table>
 
 {#each data.data as maatregel, i}
-  <div class='tooltip {maatregel['tekst'].replaceAll(' ','').replaceAll('/','').replaceAll(',','')}'>
-    <img class='tooltip-img' src='/images/maatregelen/{maatregel['tekst'].replaceAll(' ', '').replaceAll(',','').replaceAll('/','')}.jpg'/>
+  <div class='tooltip {replaceChars(maatregel['tekst'])}'>
+    <img class='tooltip-img' src='/images/maatregelen/{replaceChars(maatregel['tekst'])}.jpg'/>
     <h2>{maatregel['tekst']}</h2>
     <p>{maatregel['omschrijving']}</p>
   </div>
