@@ -101,9 +101,13 @@
 
 {#each data.data as maatregel, i}
   <div class='tooltip {replaceChars(maatregel['tekst'])}'>
-    <img class='tooltip-img' src='/images/maatregelen/{replaceChars(maatregel['tekst'])}.jpg'/>
-    <h2>{maatregel['tekst']}</h2>
-    <p>{maatregel['omschrijving']}</p>
+    <div class='tooltip-img-div'>
+      <img class='tooltip-img' src='/images/maatregelen/{replaceChars(maatregel['tekst'])}.jpg'/>
+    </div>
+    <div class='tooltip-text-div'>
+      <h2>{maatregel['tekst']}</h2>
+      <p>{maatregel['omschrijving']}</p>
+    </div>
   </div>
 {/each}
 
@@ -171,20 +175,35 @@
   .tooltip{
     background-color: white;
     position:fixed;
-    width:30%;
+    width:60%;
     height:fit-content;
-    top:1%;
+    top:20%;
     left:216px;
     box-shadow: 0 8px 15px rgb(0 0 0 / 0.5);
     border-radius: 3%;
-    text-align: center;
     padding: 30px;
     visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tooltip-img-div{
+    width:40%;
+    float:left;
+
   }
 
   .tooltip-img{
-    width:70%;
+    width:100%;
     border-radius: 1%;
+  }
+
+  .tooltip-text-div{
+    float:left;
+    width:50%;
+    text-align: left;
+    margin-left: 10%;
   }
 
 </style>
